@@ -1,6 +1,11 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
-import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
+import {FIREBASE_PROVIDERS, 
+  defaultFirebase, 
+  AngularFire, 
+  AuthMethods, 
+  AuthProviders, 
+  firebaseAuthConfig} from 'angularfire2';
 
 
 import {StatusBar} from 'ionic-native';
@@ -29,9 +34,18 @@ ionicBootstrap(MyApp, [
   FIREBASE_PROVIDERS,
   // Initialize Firebase app  
   defaultFirebase({
-    apiKey: "AIzaSyDRkJqr5N_1YhB96IzdZbwMVnEGds0tGXg",
-    authDomain: "friendlychat-3c7d6.firebaseapp.com",
-    databaseURL: "https://friendlychat-3c7d6.firebaseio.com",
-    storageBucket: "friendlychat-3c7d6.appspot.com",
-  })
+    // apiKey: "AIzaSyDRkJqr5N_1YhB96IzdZbwMVnEGds0tGXg",
+    // authDomain: "friendlychat-3c7d6.firebaseapp.com",
+    // databaseURL: "https://friendlychat-3c7d6.firebaseio.com",
+    // storageBucket: "friendlychat-3c7d6.appspot.com",
+
+    apiKey: "AIzaSyC7N7aZEaNqikGia6iOJwySRh_i7xSGuZI",
+    authDomain: "readlistenpray-6c1ee.firebaseapp.com",
+    databaseURL: "https://readlistenpray-6c1ee.firebaseio.com",
+    storageBucket: "readlistenpray-6c1ee.appspot.com",
+  }),
+  firebaseAuthConfig({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Redirect
+    })
 ])

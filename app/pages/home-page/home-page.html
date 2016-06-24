@@ -16,19 +16,15 @@
   <button (click)="goToFactsPage()">Scientific Facts</button>
   <br>
 
-  <ion-item>
-    <ion-label>Start Time</ion-label>
-    <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" ></ion-datetime>
-  </ion-item>
-  HI!
+  <div>
+    <h4>Order By:</h4>
+    <button (click)="orderBooksBy('name')">name</button>
+    <button (click)="orderBooksBy('book_group_id')">id</button>
+  </div>
 
   <ul *ngFor="let item of items | async">
   <li class="text">
-    {{item.text}}
+    {{item.name}}
   </li>
 </ul>
 
