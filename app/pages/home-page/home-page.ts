@@ -13,9 +13,9 @@ export class HomePage {
   orderSubject: Subject<any>;
 
   constructor(private _navController: NavController,
-              af: AngularFire) {
+              public af: AngularFire) {
     this.orderSubject = new Subject();            
-    this.items = af.database.list('books', {
+    this.items = af.database.list('bible-version/versions', {
       query: {
         orderByChild: this.orderSubject
       }
