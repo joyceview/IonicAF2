@@ -15,12 +15,13 @@
   <p>Want to learn some facts?  Click below.</p>
   <button (click)="goToFactsPage()">Scientific Facts</button>
   <br>
-
- 
+  <br>
+  <test-comp></test-comp>
+  <br>
   <div>
     <h4>Order By:</h4>
-    <button (click)="orderBooksBy('lang_name')">name</button>
-    <button (click)="orderBooksBy('lang_name')">id</button>
+    <button (click)="orderBooksBy('name')">name</button>
+    <button (click)="orderBooksBy('lang_name')">language</button>
   </div>
 
   <ul *ngFor="let item of items | async">

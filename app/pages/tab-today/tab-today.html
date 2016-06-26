@@ -1,0 +1,31 @@
+<ion-navbar *navbar>
+  <ion-title>Today</ion-title>
+  <ion-buttons end>
+    <button (click)="addPrayer()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content padding class="tab-today">
+  <ion-list>
+      <ion-list-header>
+        Reading
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Prayers
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+</ion-content>

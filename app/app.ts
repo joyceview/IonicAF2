@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
+import {Storage, LocalStorage, Events} from 'ionic-angular';
 import {FIREBASE_PROVIDERS, 
   defaultFirebase, 
   AngularFire, 
@@ -10,17 +11,65 @@ import {FIREBASE_PROVIDERS,
 
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-
+import { TutorialPage } from './pages/tutorial/tutorial';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
 
+  IS_LAUNCHED = "iNewKey";
+
   private rootPage:any;
+  storage = new Storage(LocalStorage);
+
+  // return a promise
+  isLaunched() {
+    return this.storage.get(this.IS_LAUNCHED).then((value) => {
+      return value;
+    });
+  }
+
+  setRootPage() {
+      
+
+    this.storage.remove(this.IS_LAUNCHED);
+
+    console.log(this.isLaunched()===null?"IsNull":"Has value");
+    console.log(this.isLaunched()?"true":"false");
+
+    if (this.isLaunched()) {
+      console.log("BEFORE: Launched");
+    }
+    else {
+      console.log("BEFORE: First Load");
+    }
+
+    if ( this.isLaunched() ) {
+        this.rootPage = TabsPage ;
+    }
+    else {
+      this.storage.set(this.IS_LAUNCHED, false);
+      this.rootPage = TutorialPage;
+    }
+    if (this.isLaunched()) {
+      console.log("Launched");
+    }
+    else {
+      console.log("First Launch");
+    }
+
+  }
 
   constructor(private platform:Platform) {
-    this.rootPage = TabsPage;
+
+    this.storage.clear();
+
+    //this.storage.get(this.IS_LAUNCHED);
+    console.log(this.storage.get(this.IS_LAUNCHED)===null?"IsNull":"Has value");
+    //console.log(this.isLaunched()?"true":"false");
+
+    this.rootPage = TabsPage; //TutorialPage;
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -28,6 +77,8 @@ export class MyApp {
       StatusBar.styleDefault();
     });
   }
+
+
 }
 
 ionicBootstrap(MyApp, [
@@ -45,7 +96,9 @@ ionicBootstrap(MyApp, [
     storageBucket: "readlistenpray-6c1ee.appspot.com",
   }),
   firebaseAuthConfig({
-      provider: AuthProviders.Google,
-      method: AuthMethods.Redirect
+      provider: AuthProviders.Twitter,
+      method: AuthMethods.Redirect,
     })
-])
+], {
+  tabbarPlacement: 'bottom'
+})
