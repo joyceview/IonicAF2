@@ -1,13 +1,21 @@
-<!--
-  Generated template for the AddPrayerPage page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-navbar *navbar>
   <ion-title>add-prayer</ion-title>
+  <ion-buttons end>
+    <button (click)="doneAddingPrayer()">
+      Done
+    </button>
+  </ion-buttons>
 </ion-navbar>
 
 <ion-content padding class="add-prayer">
   
+  <!--<h1>{{ prayer | async | json }}</h1>-->
+  <input type="text" #newname placeholder="Name" />
+  <input type="text" #newsize placeholder="Size" />
+  
+  <br />
+  <button (click)="push(newname.value, newsize.value)">Push</button>
+  
+
 </ion-content>
