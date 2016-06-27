@@ -2,7 +2,7 @@
 <ion-navbar *navbar>
   <ion-title>add-prayer</ion-title>
   <ion-buttons end>
-    <button (click)="doneAddingPrayer()">
+    <button (click)="doneAddingPrayer(newname.value, newsize.value)">
       Done
     </button>
   </ion-buttons>
@@ -13,9 +13,6 @@
   <!--<h1>{{ prayer | async | json }}</h1>-->
   <input type="text" #newname placeholder="Name" />
   <input type="text" #newsize placeholder="Size" />
-  
-  <br />
-  <button (click)="push(newname.value, newsize.value)">Push</button>
   
 
 </ion-content>

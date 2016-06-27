@@ -22,9 +22,10 @@
       <ion-list-header>
         Prayers
       </ion-list-header>
-      <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
+      <button ion-item menuClose *ngFor="let p of prayers | async" 
+              (click)="selectPrayer(p)">
         <ion-icon item-left [name]="p.icon"></ion-icon>
-        {{p.title}}
+        {{p.name}}
       </button>
     </ion-list>
 

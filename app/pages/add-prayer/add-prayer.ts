@@ -15,28 +15,15 @@ export class AddPrayerPage {
 
   constructor(private nav: NavController,
               public af: AngularFire) {
-
                 this.prayers = af.database.list('/users/user1/prayers');
-
               }
   
 
-  doneAddingPrayer(){
-    //this.prayer.set({ prayer: newname });
-  }
 
-  // save(newName: string, newSize: string) {
-  //   this.prayers.set({ name: newName, size: newSize });
-  // }
-  // update(newSize: string) {
-  //   this.prayer.update({ size: newSize });
-  // }
-  // delete() {
-  //   this.prayer.remove();
-  // }
-  push(newName: string, newSize: string) {
+  doneAddingPrayer(newName: string, newSize: string) {
     var date = new Date();
     this.prayers.push({ name: newName, size: newSize, createdOn: date.toUTCString() });
 
+    this.nav.pop();
   }
 }
