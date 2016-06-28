@@ -1,6 +1,14 @@
 
 <ion-navbar *navbar>
   <ion-title>selected-prayer</ion-title>
+  <ion-buttons end>
+    <button (click)="showEditForm()" >
+      Edit
+    </button>
+    <button (click)="showViewForm()">
+      Done
+    </button>
+  </ion-buttons>
 </ion-navbar>
 
 <ion-content padding class="selected-prayer">
