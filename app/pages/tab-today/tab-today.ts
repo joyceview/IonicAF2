@@ -6,11 +6,12 @@ import { AddPrayerPage } from '../add-prayer/add-prayer';
 import { SelectedPrayerPage } from '../selected-prayer/selected-prayer';
 
 import { UserDataService } from '../../providers/user-data.service';
+import { PrayerDataService } from '../../providers/prayer-data.service';
 
 
 @Component({
   templateUrl: 'build/pages/tab-today/tab-today.html',
-  providers: [UserDataService]
+  providers: [UserDataService, PrayerDataService]
 })
 
 export class TabTodayPage {
@@ -19,12 +20,17 @@ export class TabTodayPage {
 
   constructor(
     private nav: NavController,
-    public af: AngularFire,
-    private userData: UserDataService
+    private af: AngularFire,
+    private userData: UserDataService,
+    private prayerData: PrayerDataService
   ) {
-    this.prayers = af.database.list('/users/user1/prayers');
-
   }
+
+  ngOnInit() {
+    this.prayers = this.prayerData.getPrayersByUser("user1");
+  }
+
+  
 
   addPrayer() {
     this.nav.push(AddPrayerPage);

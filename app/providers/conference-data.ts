@@ -73,7 +73,12 @@ export class ConferenceData {
     }
   }
 
-  getTimeline(dayIndex, queryText = '', excludeTracks = [], segment = 'all') {
+  getTimeline(
+    dayIndex, 
+    queryText = '', 
+    excludeTracks = [], 
+    segment = 'all'
+  ) {
     return this.load().then(data => {
       let day = data.schedule[dayIndex];
       day.shownSessions = 0;

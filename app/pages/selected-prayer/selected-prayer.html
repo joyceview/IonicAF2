@@ -1,16 +1,21 @@
 
 <ion-navbar *navbar>
-  <ion-title>selected-prayer</ion-title>
+  <ion-title>{{ prayer.createdOn }}</ion-title>
   <ion-buttons end>
-    <button (click)="showEditForm()" >
+    <button (click)="showEditPrayer()" *ngIf="isEditButton" >
       Edit
     </button>
-    <button (click)="showViewForm()">
+    <button (click)="doneEditingPrayer(prayer.$key, prayer.name)" *ngIf="isDoneButton">
       Done
     </button>
   </ion-buttons>
 </ion-navbar>
 
+<ion-hiddden></ion-hiddden>
+
 <ion-content padding class="selected-prayer">
+  <ion-textarea type="text" [readonly]="isDoneButton" [(ngModel)]="prayer.name" ></ion-textarea>
   <p>{{ prayer.name }}</p>
+  <p>{{ prayer.size }}</p>
+   <p>{{ prayer.$key }}</p>
 </ion-content>
