@@ -1,0 +1,15 @@
+
+<ion-navbar *navbar>
+  <ion-title>addPrayerTopic</ion-title>
+  <ion-buttons end>
+    <button (click)="doneAddingPrayerTopic(newTitle.value, newContent.value)">
+      Done
+    </button>
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content padding class="add-prayer-topic">
+  <input type="text" #newTitle placeholder="title" />
+  <br>
+  <textarea type="text" #newContent placeholder="details" ></textarea>
+</ion-content>

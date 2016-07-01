@@ -1,0 +1,8 @@
+
+<button ion-item menuClose *ngFor="let pt of prayerTopics | async" 
+        (click)="selectPrayerTopic(pt)">
+  <ion-icon item-right [name]="pt.icon"></ion-icon>
+  <ion-icon item-right name="book"></ion-icon>
+  <p >{{ pt.createdOn }}</p>
+  {{pt.name}}
+</button>

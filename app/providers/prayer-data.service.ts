@@ -49,9 +49,13 @@ export class PrayerDataService {
     return this.prayerTopics = this.af.database.list('/prayertopics');
   }
 
-  addPrayerTopic(newTopicName: string, newDetails: string) {
-    this.prayerTopics.push({ 
-      name: newTopicName, 
+  addPrayerTopic(
+    newTopicTitle: string, 
+    newDetails: string
+  ) {
+    
+    this.af.database.list('/prayertopics').push({ 
+      name: newTopicTitle, 
       details: newDetails,
       createdBy: this.userData.getUsername(), 
       createdOn: (new Date()).toUTCString() 

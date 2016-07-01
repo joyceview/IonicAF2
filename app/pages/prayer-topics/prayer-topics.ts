@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+//import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
-/*
-  Generated class for the PrayerTopicsPage page.
+import { PrayerTopicListComponent } from '../../components/prayer-topic-list-component/prayer-topic-list-component'
+import { AddPrayerTopicPage } from '../add-prayer-topic/add-prayer-topic';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/prayer-topics/prayer-topics.html',
+  directives: [PrayerTopicListComponent]
 })
+
 export class PrayerTopicsPage {
+  
+
   constructor(private nav: NavController) {}
+
+  
+  addPrayerTopic() {
+    this.nav.push(AddPrayerTopicPage);
+  }
 }
