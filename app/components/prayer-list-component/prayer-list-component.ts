@@ -18,7 +18,6 @@ export class PrayerListComponent {
   prayers: FirebaseListObservable<any>;
 
   constructor(
-    
     private nav: NavController,
     private af: AngularFire,
     private userData: UserDataService,

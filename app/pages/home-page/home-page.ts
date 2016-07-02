@@ -5,11 +5,11 @@ import { AuthProviders, AuthMethods } from 'angularfire2';
 import { Subject } from 'rxjs/Subject';
 
 import { ScientificFactsPage } from '../scientific-facts-page/scientific-facts-page';
-import { TestComp } from '../../components/test-comp/test-comp';
+//import { TestComp } from '../../components/test-comp/test-comp';
 
 @Component({
   templateUrl: 'build/pages/home-page/home-page.html',
-  directives: [TestComp]
+  //directives: [TestComp]
 })
 export class HomePage {
 

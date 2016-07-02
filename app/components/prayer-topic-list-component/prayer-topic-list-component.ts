@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-//import { SelectedPrayerPage } from '../../pages/selected-prayer/selected-prayer';
+import { SelectedPrayerTopicPage } from '../../pages/selected-prayer-topic/selected-prayer-topic';
 
 import { UserDataService } from '../../providers/user-data.service';
 import { PrayerDataService } from '../../providers/prayer-data.service';
@@ -24,5 +24,9 @@ export class PrayerTopicListComponent {
 
   ngOnInit() {
     this.prayerTopics = this.prayerData.getPrayerTopics();
+  }
+
+  selectPrayerTopic(prayerTopic){
+    this.nav.push(SelectedPrayerTopicPage, prayerTopic)
   }
 }

@@ -53,10 +53,11 @@ export class PrayerDataService {
     newTopicTitle: string, 
     newDetails: string
   ) {
+    var prayersList = newDetails.split("\n\n");
     
     this.af.database.list('/prayertopics').push({ 
       name: newTopicTitle, 
-      details: newDetails,
+      prayers: prayersList,
       createdBy: this.userData.getUsername(), 
       createdOn: (new Date()).toUTCString() 
     });
@@ -78,7 +79,7 @@ export class PrayerDataService {
   addUserPrayer(uid: string, newName: string, newSize: string) {
     var date = new Date();
 
-    this.userPrayers.push({ 
+    this.af.database.list(`users/${uid}/prayers`).push({ 
         name: newName, 
         size: newSize, 
         createdOn: date.toUTCString() 

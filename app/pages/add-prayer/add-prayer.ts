@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Observable } from 'rxjs/Observable'
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+// import { Observable } from 'rxjs/Observable'
+// import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 import { PrayerDataService } from '../../providers/prayer-data.service'
 import { UserDataService } from '../../providers/user-data.service'
@@ -14,11 +14,11 @@ import { UserDataService } from '../../providers/user-data.service'
 
 export class AddPrayerPage {
 
-  prayers: FirebaseListObservable<any>;
+  // prayers: FirebaseListObservable<any>;
 
   constructor(
     private nav: NavController,
-    private af: AngularFire,
+    //private af: AngularFire,
     private prayerData: PrayerDataService,
     private userData: UserDataService
   
@@ -26,9 +26,9 @@ export class AddPrayerPage {
       
   }
   
-  ngOnInit() {
-    this.prayers = this.prayerData.getPrayersByUser("user1");
-  }
+  // ngOnInit() {
+  //   this.prayers = this.prayerData.getPrayersByUser("user1");
+  // }
 
 
   doneAddingPrayer(newName: string, newSize: string) {
