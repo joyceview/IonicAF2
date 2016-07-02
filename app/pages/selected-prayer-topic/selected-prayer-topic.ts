@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { PrayerListComponent } from '../../components/prayer-list-component/prayer-list-component'
+
 import { UserDataService } from '../../providers/user-data.service';
 import { PrayerDataService } from '../../providers/prayer-data.service';
 
 @Component({
   templateUrl: 'build/pages/selected-prayer-topic/selected-prayer-topic.html',
-  providers: [UserDataService, PrayerDataService]
+  providers: [UserDataService, PrayerDataService],
+  directives: [PrayerListComponent]
 })
 export class SelectedPrayerTopicPage {
 

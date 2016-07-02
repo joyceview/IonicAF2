@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
@@ -15,6 +15,13 @@ import { PrayerDataService } from '../../providers/prayer-data.service';
 })
 export class PrayerListComponent {
 
+  _prayerTopicKey: string = '<no prayer topic selected>';
+
+  @Input()
+  set prayerTopicKey(prayerTopicKey: string) {
+    this._prayerTopicKey = (prayerTopicKey && prayerTopicKey.trim()) || '<no prayer topic selected>';
+  }
+
   prayers: FirebaseListObservable<any>;
 
   constructor(
@@ -26,7 +33,14 @@ export class PrayerListComponent {
   }
 
   ngOnInit() {
-    this.prayers = this.prayerData.getPrayersByUser("user1");
+    console.log("Prayer Topic Key: "+this._prayerTopicKey);
+    if (this._prayerTopicKey != '<no prayer topic selected>')
+    {
+      this.prayers = this.prayerData.getPrayersByTopic(this._prayerTopicKey);
+    }
+    else {
+      this.prayers = this.prayerData.getPrayersByUser("user1");
+    }
   }
 
   selectPrayer(prayer){

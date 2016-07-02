@@ -54,13 +54,21 @@ export class PrayerDataService {
     newDetails: string
   ) {
     var prayersList = newDetails.split("\n\n");
+
+    var formatedPrayerList = prayersList.map(function(elem){
+        return {"name":elem};
+    });
     
     this.af.database.list('/prayertopics').push({ 
       name: newTopicTitle, 
-      prayers: prayersList,
+      prayers: formatedPrayerList,
       createdBy: this.userData.getUsername(), 
       createdOn: (new Date()).toUTCString() 
     });
+  }
+
+  getPrayersByTopic(key: string) {
+    return this.af.database.list(`/prayertopics/${key}/prayers`);
   }
 
   removePrayerTopic(key: string) {
